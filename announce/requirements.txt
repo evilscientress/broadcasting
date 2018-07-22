@@ -1,0 +1,4 @@
+git+https://github.com/masterbase/python-twitch-client@master#egg=python-twitch-client
+requests>=2.19.1
+tracery>=0.1.1
+tweepy>=3.6.0
