@@ -306,7 +306,7 @@ def get_last_screenshot():
     return screenshots[-1]
 
 if minutes_since_last_tweet() >= config['twitter']['interval']:
-    twitch_set_status(grammar.flatten("#twitch_status#"))
+#    twitch_set_status(grammar.flatten("#twitch_status#"))
     twitch_set_communities(twitch_communities)
     tweet('#first_tweet#')
     discord('#chat_msg#')
