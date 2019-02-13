@@ -200,7 +200,11 @@ rules = {
     ],
 
     'content': [
+        '#firstContent.capitalize# & #secondContent##exclam#',
         '#firstContent.capitalize#, #secondContent#, and #bonusContent##exclam#',
+        '#firstContent.capitalize# & #secondContent##exclam#',
+        '#firstContent.capitalize# & #secondContent##exclam#',
+        '#firstContent.capitalize# & #secondContent##exclam#',
         '#firstContent.capitalize# & #secondContent##exclam#',
         '#firstContent.capitalize# & #secondContent##exclam#',
         '#firstContent.capitalize# & #secondContent##exclam#',
@@ -208,7 +212,7 @@ rules = {
 
     'firstContent': [ 'electronics', 'electronics', 'hardware', 'hardware', 'engineering', 'PCBs', 'circuits' ],
     'secondContent': [ 'experiments', 'science', 'reverse engineering', 'learning something', 'cool gadgets', 'blinky stuff', 'coding'],
-    'bonusContent': [ 'latex', 'magic smoke (sometimes)' ],
+    'bonusContent': [ 'magic smoke (sometimes)' ],
 
     'chat_msg': ['#starting# #content#\n#youtube_url#'],
     'first_tweet': ['#starting# #content# #main_hashtag#\n#both_urls#'],
