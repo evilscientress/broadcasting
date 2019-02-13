@@ -217,7 +217,7 @@ grammar.add_modifiers(base_english)
 
 def minutes_since_last_tweet():
     mtime = 0
-    try:        
+    try:
         mtime = os.stat(config['twitter']['timestamp_path']).st_mtime
     except Exception as e:
         pass
@@ -285,7 +285,7 @@ def twitch_set_communities(twitch_communities):
 def discord_sendmsg(content, tts=None, embeds=None, webhook_url=config['discord_webhook']):
     data={'content': content, 'tts': tts, 'embeds': embeds}
     r = requests.post(webhook_url, json=data)
-    if r.status_code < 200 or r.status_code >= 300:    
+    if r.status_code < 200 or r.status_code >= 300:
         print("error posting discord message: status code %d\n%s" % (r.status_code, r.text))
 
 def discord(template):
