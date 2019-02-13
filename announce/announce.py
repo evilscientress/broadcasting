@@ -9,6 +9,7 @@ from tracery.modifiers import base_english
 from twitch import TwitchClient
 import tweepy
 import requests
+from mastodon import Mastodon
 
 def save_config():
     json.dump(config, open('config.json', 'w'), indent=2)
@@ -135,6 +136,10 @@ twitter_live = tweepy.API(auth_live, wait_on_rate_limit=True, wait_on_rate_limit
 twitter_main = tweepy.API(auth_main, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 twitch = TwitchClient(client_id=config['twitch']['client_id'], oauth_token=config['twitch']['access_token'])
 twitch_channel = twitch.channels.get()
+mastodon = Mastodon(
+    access_token=config['mastodon'].get('access_token', 'pytooter_usercred.secret'),
+    api_base_url=config['mastodon'].get('api_base_url', 'mastodon.social'),
+)
 
 #resolve twitch communities if communities is set in conifg
 twitch_communities = None
@@ -245,6 +250,13 @@ def tweet(template, media=None):
                 print('Error! Failed to retweet annoucment on main account')
         except tweepy.TweepError:
             print('Error! Failed to tweet annoucment tweet on live account')
+        try:
+            media_ids = None
+            if media is not None:
+                media_ids = [mastodon.media_post(media)]
+            mastodon.status_post(text, media_ids=media_ids)
+        except Mastodon.MastodonIllegalArgumentError:
+            print('Error! Failed to toot annoucment')
     else:
         if media is None:
             print('would tweet:\n%s' % (text,))

@@ -103,3 +103,4 @@ env/
 
 config.json
 *.timestamp
+pytooter*
